@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "ganachecli.fullname" . }}-ganachecli
+  labels:
+    app: {{ template "ganachecli.name" . }}
+    chart: {{ template "ganachecli.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: ganachecli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "ganachecli.name" . }}
+      release: {{ .Release.Name }}
+      component: ganachecli
+  template:
+    metadata:
+      labels:
+        app: {{ template "ganachecli.name" . }}
+        release: {{ .Release.Name }}
+        component: ganachecli
+    spec:
+      containers:
+      - name: ganachecli
+        image: {{ .Values.ganachecli.image.repository }}:{{ .Values.ganachecli.image.tag }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        ports:
+        - name: http
+          containerPort: 3000

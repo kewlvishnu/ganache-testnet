@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ template "ganachecli.fullname" . }}-state
+  labels:
+    app: {{ template "ganachecli.name" . }}
+    chart: {{ template "ganachecli.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: ganachecli
+spec:
+  selector:
+    app: {{ template "ganachecli.name" . }}
+    release: {{ .Release.Name }}
+    component: ganachecli
+  type: {{ .Values.ganachecli.service.type }}
+  ports:
+  - port: 80
+    targetPort: http

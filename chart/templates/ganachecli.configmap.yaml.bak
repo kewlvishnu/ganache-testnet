@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "ganachecli.fullname" . }}-geth-config
+  labels:
+    app: {{ template "ganachecli.name" . }}
+    chart: {{ template "ganachecli.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  networkid: "{{ .Values.ganachecli.tag }}"
