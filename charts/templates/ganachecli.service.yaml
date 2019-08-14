@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ template "ganachecli.fullname" . }}-state
+  name: {{ template "ganachecli.fullname" . }}
   labels:
     app: {{ template "ganachecli.name" . }}
     chart: {{ template "ganachecli.chart" . }}
@@ -15,6 +15,6 @@ spec:
     component: ganachecli
   type: {{ .Values.ganachecli.service.type }}
   ports:
-  - name: ganachecli-http
+  - name: {{ .Release.Name }}
     port: 8545
     targetPort: 8545

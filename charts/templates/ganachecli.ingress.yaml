@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ template "ganachecli.fullname" . }}-state
+  name: {{ template "ganachecli.fullname" . }}
   labels:
     app: {{ template "ganachecli.name" . }}
     chart: {{ template "ganachecli.chart" . }}
@@ -26,5 +26,5 @@ spec:
       paths:
       - path: /{{ .Values.ganachecli.path }}
         backend:
-          serviceName: {{ template "ganachecli.fullname" . }}-state
-          servicePort: ganachecli-http
+          serviceName: {{ template "ganachecli.fullname" . }}
+          servicePort: {{ .Release.Name }}

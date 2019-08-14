@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "ganachecli.fullname" . }}-ganachecli
+  name: {{ template "ganachecli.fullname" . }}
   labels:
     app: {{ template "ganachecli.name" . }}
     chart: {{ template "ganachecli.chart" . }}
@@ -29,5 +29,4 @@ spec:
         ports:
         - name: http
           containerPort: 8545
-          hostPort: 8545
           protocol: TCP
