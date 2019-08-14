@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "ganachecli.fullname" . }}-state
+  labels:
+    app: {{ template "ganachecli.name" . }}
+    chart: {{ template "ganachecli.chart" . }}
+    release: {{ .Release.Name }}
+    component: ganachecli
+    heritage: {{ .Release.Service }}
+  {{- if .Values.ganachecli.ingress }}
+  {{- range $key, $value := .Values.ganachecli.ingress.labels }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+  {{- end }}
+  annotations:
+  {{- if .Values.ganachecli.ingress }}
+  {{- range $key, $value := .Values.ganachecli.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+  {{- end }}
+spec:
+  rules:
+  - host: {{ .Values.ganachecli.domain }}
+    http:
+      paths:
+      - backend:
+          serviceName: {{ template "ganachecli.fullname" . }}-state
+          servicePort: ganachecli-http

@@ -1,7 +1,8 @@
 ganachecli:
+  domain: ganachecli.example.com
   image:
     repository: trufflesuite/ganache-cli
     tag: latest
   webSocketSecret: my-secret-for-connecting-to-ethstats
   service:
-    type: LoadBalancer
+    type: ClusterIP
