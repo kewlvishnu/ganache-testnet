@@ -1,6 +1,6 @@
 ganachecli:
-  domain: ganachecli.example.com
-  path: sduhdjkhdkuhfkughkre
+  domain: private.testnet.infernos.io
+  path: xyz123
   image:
     repository: trufflesuite/ganache-cli
     tag: latest
