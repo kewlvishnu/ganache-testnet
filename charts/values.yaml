@@ -1,5 +1,6 @@
 ganachecli:
   domain: ganachecli.example.com
+  path: xyz
   image:
     repository: trufflesuite/ganache-cli
     tag: latest

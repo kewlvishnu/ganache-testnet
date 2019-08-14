@@ -24,6 +24,7 @@ spec:
   - host: {{ .Values.ganachecli.domain }}
     http:
       paths:
-      - backend:
+      - path: /{{ .Values.ganachecli.path }}
+        backend:
           serviceName: {{ template "ganachecli.fullname" . }}-state
           servicePort: ganachecli-http
