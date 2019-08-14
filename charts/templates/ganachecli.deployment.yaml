@@ -30,3 +30,6 @@ spec:
         - name: http
           containerPort: 8545
           protocol: TCP
+        args:
+        - "--blockTime=10"
+        - "--account=0xe2b4f36af2b5206d8becc403cbfeecad0da89d7e79c7d15b35f5b9e535bb9d75,1000000000000000000000"
