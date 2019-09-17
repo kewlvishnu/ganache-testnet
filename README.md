@@ -5,8 +5,10 @@ This will deploy Traefik:
 
 create secret: https://docs.traefik.io/user-guide/kubernetes/#creating-the-secret
 
- ```htpasswd -c ./auth myusername```   then pass <password>
+ ```htpasswd -c ./auth myusername```
+ 
  ```cat auth``` 
+ 
  ```kubectl create secret generic mysecret --from-file auth --namespace=default```
 
 Then enable basic auth: https://docs.traefik.io/v1.5/configuration/backends/kubernetes/#authentication
