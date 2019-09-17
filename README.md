@@ -4,6 +4,7 @@ This will deploy Traefik:
 ```helm install --name traefik-ingress --namespace kube-system --set dashboard.enabled=true,dashboard.domain=dashboard.infernos.io,rbac.enabled=true stable/traefik```
 
 create secret: https://docs.traefik.io/user-guide/kubernetes/#creating-the-secret
+
  ```htpasswd -c ./auth myusername```   then pass <password>
  ```cat auth``` 
  ```kubectl create secret generic mysecret --from-file auth --namespace=default```
