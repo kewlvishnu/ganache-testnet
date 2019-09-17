@@ -1,6 +1,7 @@
 ganachecli:
   domain: private.testnet.infernos.io
   path: xyz123
+  secret: "mysecret"
   image:
     repository: trufflesuite/ganache-cli
     tag: latest

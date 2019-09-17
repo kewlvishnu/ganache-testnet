@@ -19,6 +19,8 @@ metadata:
     {{ $key }}: {{ $value | quote }}
   {{- end }}
   {{- end }}
+    traefik.ingress.kubernetes.io/auth-type: "basic"
+    traefik.ingress.kubernetes.io/auth-secret: {{ .Values.ganachecli.secret }}
 spec:
   rules:
   - host: {{ .Values.ganachecli.domain }}
