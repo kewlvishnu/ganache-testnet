@@ -1,6 +1,7 @@
 ganachecli:
   domain: private.testnet.infernos.io
   path: xyz123
+  whitelistIP: "173.48.233.154/32,0.0.0.0/0"
   secret: "mysecret"
   image:
     repository: trufflesuite/ganache-cli
