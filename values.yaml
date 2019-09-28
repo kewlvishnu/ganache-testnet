@@ -1,11 +1,11 @@
 ganachecli:
   domain: private.testnet.infernos.io
-  path: xyz123
-  whitelistIP: "173.48.233.154/32,0.0.0.0/0"
-  secret: "mysecret"
+  path: testnet1
+  whitelistIP: "true"
+  whitelistIPlist: "173.48.233.154/32,0.0.0.0/0"
+  authentication: "true"
   image:
     repository: trufflesuite/ganache-cli
     tag: latest
-  webSocketSecret: my-secret-for-connecting-to-ethstats
   service:
     type: ClusterIP

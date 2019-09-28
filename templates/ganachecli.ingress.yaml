@@ -14,14 +14,18 @@ metadata:
   {{- end }}
   {{- end }}
   annotations:
-    traefik.ingress.kubernetes.io/whitelist-source-range: {{ .Values.ganachecli.whitelistIP }}
+    {{ if eq .Values.ganachecli.whitelistIP "true" }}
+    traefik.ingress.kubernetes.io/whitelist-source-range: {{ .Values.ganachecli.whitelistIPlist }}
+    {{ end }}
   {{- if .Values.ganachecli.ingress }}
   {{- range $key, $value := .Values.ganachecli.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
   {{- end }}
   {{- end }}
+    {{ if eq .Values.ganachecli.authentication "true" }}
     traefik.ingress.kubernetes.io/auth-type: "basic"
-    traefik.ingress.kubernetes.io/auth-secret: {{ .Values.ganachecli.secret }}
+    traefik.ingress.kubernetes.io/auth-secret: {{ .Release.Name }}-secret
+    {{ end }}
 spec:
   rules:
   - host: {{ .Values.ganachecli.domain }}

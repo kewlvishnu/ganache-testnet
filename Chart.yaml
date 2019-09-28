@@ -1,13 +1,12 @@
 apiVersion: v1
 name: ganache-testnet
-version: 1.0.0
+version: 1.2.0
 appVersion: v1.7.3
 description: private Ethereum network Helm chart for Kubernetes
 keywords:
 - ethereum
 - blockchain
-- ganachecli
-home: https://www.ethereum.org/
+home: https://www.integro.io/
 sources:
 - https://github.com/ethereum/go-ethereum
 maintainers:
