@@ -25,6 +25,7 @@ This will deploy ganachecli (This must be run from the root of the git repo):
 NOTE: Traefik and testnet dont have to be in the name namespace.
 
 Helm chart repo location: https://infernos-chart.storage.googleapis.com/ganache-testnet-1.0.0.tgz
+
 How to publish Helm Charts: https://helm.sh/docs/developing_charts/#prerequisites-1
 
   001  "Update the index.yaml with the latest version -- vi ganache-testnet/index.yaml"  
