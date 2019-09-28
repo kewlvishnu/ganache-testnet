@@ -28,20 +28,37 @@ Helm chart repo location: https://infernos-chart.storage.googleapis.com/ganache-
 How to publish Helm Charts: https://helm.sh/docs/developing_charts/#prerequisites-1
 
   001  "Update the index.yaml with the latest version -- vi ganache-testnet/index.yaml"
+  
   002  helm package ganache-testnet
+  
   003  ls
+  
   004  mkdir chart-repo
+  
   005  mv ganache-testnet-latest-version.tgz chart-repo/
+  
   006  helm repo index chart-repo --url https://infernos-chart.storage.googleapis.com
+  
   007  cd chart-repo/
+  
   008  ls
+  
   009  cat index.yaml 
+  
   010  cd ..
+  
   011  mv ganache-testnet-1.0.0.tgz chart-repo/
+  
   012  mv test-chart-0.1.0.tgz chart-repo/ .    ---- this step is done to make sure all the charts are present in the folder
+  
   013  helm repo index chart-repo --url https://infernos-chart.storage.googleapis.com
+  
   014  cd chart-repo/
+  
   015  ls
+  
   016  cat index.yaml   -- varify all the charts are listed in the index.yaml in the folder chart-repo
+  
   017  cd ..
+  
   018  gsutil cp chart-repo/* gs://infernos-chart 
