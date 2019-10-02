@@ -3,7 +3,7 @@ ganachecli:
   path: testnet1
   whitelistIP: "true"
   whitelistIPlist: "173.48.233.154/32,0.0.0.0/0"
-  authentication: "true"
+  authentication: "false"
   secret: "user:$apr1$wRzQ30hZ$EAUtmbpk83sbzMw/NaQJj0"
   image:
     repository: trufflesuite/ganache-cli

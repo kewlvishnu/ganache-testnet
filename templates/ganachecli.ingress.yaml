@@ -15,6 +15,7 @@ metadata:
   {{- end }}
   annotations:
     {{ if eq .Values.ganachecli.whitelistIP "true" }}
+    ingress.kubernetes.io/whitelist-x-forwarded-for: "true"
     traefik.ingress.kubernetes.io/whitelist-source-range: {{ .Values.ganachecli.whitelistIPlist }}
     {{ end }}
   {{- if .Values.ganachecli.ingress }}
