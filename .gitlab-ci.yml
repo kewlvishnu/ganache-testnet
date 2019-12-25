@@ -1,0 +1,48 @@
+---
+stages:
+  - lint
+  - tag
+  - push
+  - delete
+
+lintCheck:
+  stage: lint
+  image: kewlvishnu/buildbox:1.0.0
+  script:
+    - helm lint
+
+tag-master:
+  stage: tag
+  image: kewlvishnu/tagmaker:1.0.0
+  script:
+    - tagmaker ${CI_PROJECT_ID} ${CI_BUILD_REF} ${API_TOKEN}
+  only:
+    changes:
+      - templates/*
+      - Chart.yaml
+      - values.yaml
+      - .gitlab-ci.yml
+    refs:
+      - master
+
+push-to-veracode-helm-registry-s3:
+  stage: push
+  image: kewlvishnu/buildbox:1.0.0
+  before_script:
+    - helm repo add charts ${HELM_REGISTRY}/infernos
+  script:
+    - helm package . --version ${CI_COMMIT_TAG}
+    - helm s3 push ${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tgz charts
+  only:
+    - tags
+
+delete-from-veracode-helm-registry-s3:
+  stage: delete
+  image: kewlvishnu/buildbox:1.0.0
+  before_script:
+    - helm repo add charts ${HELM_REGISTRY}/infernos
+  script:
+    - helm s3 delete ${CI_PROJECT_NAME} --version ${CI_COMMIT_TAG} charts
+  only:
+    - tags
+  when: manual
