@@ -10,22 +10,22 @@ lintCheck:
   image: kewlvishnu/buildbox:1.0.0
   script:
     - helm lint
-
-tag-master:
-  stage: tag
-  image: kewlvishnu/tagmaker:1.0.0
-  script:
-    - tagmaker ${CI_PROJECT_ID} ${CI_BUILD_REF} ${API_TOKEN}
-  only:
-    changes:
-      - templates/*
-      - Chart.yaml
-      - values.yaml
-      - .gitlab-ci.yml
-    refs:
-      - master
-
-push-to-veracode-helm-registry-s3:
+#
+#tag-master:
+#  stage: tag
+#  image: kewlvishnu/tagmaker:1.0.0
+#  script:
+#    - tagmaker ${CI_PROJECT_ID} ${CI_BUILD_REF} ${API_TOKEN}
+#  only:
+#    changes:
+#      - templates/*
+#      - Chart.yaml
+#      - values.yaml
+#      - .gitlab-ci.yml
+#    refs:
+#      - master
+#
+push-to-helm-registry-s3:
   stage: push
   image: kewlvishnu/buildbox:1.0.0
   before_script:
@@ -36,7 +36,7 @@ push-to-veracode-helm-registry-s3:
   only:
     - tags
 
-delete-from-veracode-helm-registry-s3:
+delete-from-helm-registry-s3:
   stage: delete
   image: kewlvishnu/buildbox:1.0.0
   before_script:
